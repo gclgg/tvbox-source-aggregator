@@ -464,6 +464,9 @@ async function _runAggregation(storage: Storage, config: AppConfig, startTime: n
     logger.infoFields('aggregation', 'pic-proxy-placeholder', { pic: merged.pic });
   }
 
+  // ===== 添加 wallpaper 字段 =====
+  merged.wallpaper = "https://tv.gcl.de5.net/wallpaper/";
+
   // Step 8: 存入存储
   const mergedJson = JSON.stringify(merged);
   await storage.put(KV_MERGED_CONFIG, mergedJson);
@@ -715,3 +718,5 @@ async function appendAggLog(storage: Storage, log: AggregationLog): Promise<void
     logger.warn('aggregation', `Failed to write agg log: ${msg}`);
   }
 }
+
+
